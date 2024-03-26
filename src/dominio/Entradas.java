@@ -10,6 +10,8 @@ public class Entradas {
 	int duracion;
 	float costo;	
 	
+	
+	
 	public int getId() {
 		return id;
 	}
