@@ -6,12 +6,28 @@ public class Entradas {
 	//atributos
 	int id;
 	String nombre;
-	Date dia;
+	Date diaFuncion;
 	int duracion;
 	float costo;	
-	
-	
-	
+	//Constructores
+	public Entradas()
+	{
+		id=0;
+		nombre = "Sin nombre";
+		diaFuncion = new Date();
+		duracion =0;
+		costo= 0;		
+	}
+	public Entradas (int id,String nombre, Date diaFuncion, int duracion, float costo)
+	{
+		this.id=id;
+		this.nombre=nombre;
+		this.diaFuncion=diaFuncion;
+		this.duracion=duracion;
+		this.costo=costo;
+			
+	}
+	//getters y setters
 	public int getId() {
 		return id;
 	}
