@@ -1,75 +1,85 @@
 package dominio;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
-import interfaces.Costo;
+import interfaces.ICosto;
 
-public class Entrada {
+public abstract class Entrada {
 
-	//atributos
+	// atributos
 	private int numeroUnicoEntrada;
 	private String nombre;
-	private Date diaFuncion;
-	//duracion "hh:mm"
-	private String duracion;
-	private float costo;	
-	
-	//Constructores
-	
-	public Entrada()
-	{
-		numeroUnicoEntrada=0;
+	private LocalDate diaFuncion;
+	// duracion "hh:mm"
+	private LocalTime duracion;
+	private BigDecimal costo;
+	// recitales - teatro - infantiles - deportes 
+	String tipoEntrada;
+
+	// Constructores
+
+	public Entrada() {
+		numeroUnicoEntrada = 0;
 		nombre = "Sin nombre";
-		diaFuncion = new Date();
-		duracion ="";
-		costo= 0;		
+		diaFuncion = LocalDate.now();
+		duracion = LocalTime.now();
+		costo = new BigDecimal(0);
+		tipoEntrada = "";
 	}
 
-	public Entrada (int id,String nombre, Date diaFuncion, int duracion, float costo)
-	{
-		this.numeroUnicoEntrada=id;
-		this.nombre=nombre;
-		this.diaFuncion=diaFuncion;
-		this.duracion="";
-		this.costo=costo;	
+	public Entrada(int id, String nombre, LocalDate diaFuncion, LocalTime duracion, BigDecimal costo,
+			String tipoEntrada) {
+		this.numeroUnicoEntrada = id;
+		this.nombre = nombre;
+		this.diaFuncion = diaFuncion;
+		this.duracion = duracion;
+		this.costo = costo;
+		this.tipoEntrada = tipoEntrada;
 	}
-	
-	//getters y setters
+
+	// getters y setters
 	public int getNumeroUnicoEntrada() {
 		return numeroUnicoEntrada;
 	}
+
 	public void setNumeroUnicoEntrada(int numeroUnicoEntrada) {
 		this.numeroUnicoEntrada = numeroUnicoEntrada;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public String getDuracion() {
+
+	public LocalTime getDuracion() {
 		return duracion;
 	}
-	public void setDuracion(String duracion) {
+
+	public void setDuracion(LocalTime duracion) {
 		this.duracion = duracion;
 	}
-	public float getCostoTotal() {
+
+	public BigDecimal getCostoTotal() {
 		return costo;
 	}
-	public void setCostoTotal(float costoTotal) {
+
+	public void setCostoTotal(BigDecimal costoTotal) {
 		this.costo = costoTotal;
 	}
 
-	public Date getDiaFuncion() {
+	public LocalDate getDiaFuncion() {
 		return diaFuncion;
 	}
 
-	public void setDiaFuncion(Date diaFuncion) {
+	public void setDiaFuncion(LocalDate diaFuncion) {
 		this.diaFuncion = diaFuncion;
 	}
 
-	
-	
-	
-	
+	public abstract BigDecimal calcularCostoTotal(String tipoEntrada);
 }

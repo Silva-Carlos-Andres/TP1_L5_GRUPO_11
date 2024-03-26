@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface Costo {
+public interface ICosto {
 	
 	public void calcularCosto(String tipo);
 }
