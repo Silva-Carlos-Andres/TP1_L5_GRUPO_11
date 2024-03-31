@@ -53,6 +53,14 @@ public class EntradaInfantil extends Entrada {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "EntradaInfantil [Costo Menores: " + costoMenores + ", Costo Mayores: " + costoMayores + ", Souvenir: "
+				+ souvenir + ", Edad: " + edad + "]";
+	}
 	
 	
 

@@ -59,4 +59,14 @@ public class EntradaDeporte extends Entrada{
 		return null;
 	}
 
+
+	@Override
+	public String toString() {
+		return "EntradaDeporte [Costo Futbol: " + costoFutbol + ", Costo Rugby: " + costoRugby + ", Costo Hockey: "
+				+ costoHockey + ", Recargo Internacional: " + recargoInternacional + ", Tipo Deporte: " + tipoDeporte
+				+ ", Internacional: " + internacional + "]";
+	}
+	
+	
+
 }

@@ -44,7 +44,13 @@ public class EntradaRecital extends Entrada implements ICosto{
 		}	
 	}
 
+	@Override
+	public String toString() {
+		return "EntradaRecital [Costo Fijo VIP: " + costoFijoVip + ", Costo Fijo General: " + costoFijoGeneral + ", Genero: "
+				+ genero + "]";
+	}
 
+	
 
 	
 	
