@@ -64,20 +64,16 @@ public class EntradaInfantil extends Entrada {
 		return costoMayores;
 	}
 
-/*
-
-	@Override
-	public BigDecimal calcularCostoTotal(String tipoEntrada) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-*/
-
 	@Override
 	public String toString() {
 		return "EntradaInfantil [Costo Menores: " + costoMenores + ", Costo Mayores: " + costoMayores + ", Souvenir: "
 				+ souvenir + ", Edad: " + edad + "]";
+	}
+
+	@Override
+	public BigDecimal calcularCostoTotal() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

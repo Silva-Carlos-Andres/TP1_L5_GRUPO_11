@@ -51,20 +51,19 @@ public class EntradaDeporte extends Entrada{
 	public double getRecargoInternacional() {
 		return recargoInternacional;
 	}
-
-/*
-	@Override
-	public BigDecimal calcularCostoTotal(String tipoEntrada) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-*/
+	
 	@Override
 	public String toString() {
 		return "EntradaDeporte [Costo Futbol: " + costoFutbol + ", Costo Rugby: " + costoRugby + ", Costo Hockey: "
 				+ costoHockey + ", Recargo Internacional: " + recargoInternacional + ", Tipo Deporte: " + tipoDeporte
 				+ ", Internacional: " + internacional + "]";
+	}
+
+
+	@Override
+	public BigDecimal calcularCostoTotal() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

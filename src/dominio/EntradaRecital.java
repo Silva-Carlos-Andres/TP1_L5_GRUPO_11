@@ -1,91 +1,65 @@
 package dominio;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-import interfaces.ICosto;
+import enums.GeneroEntradaRecital;
+import interfaces.ITipoEntrada;
 
-public class EntradaRecital extends Entrada implements ICosto{
-	
-	final BigDecimal  costoFijoVip = BigDecimal.valueOf(1500);
-	final BigDecimal  costoFijoGeneral = new BigDecimal(800);
-	
-	private int genero;
-	
-	
-	
-	//Constructores
-	
-	public EntradaRecital(int genero) {
-		super();
-		this.genero = genero;
-		
-	}
-	
+public class EntradaRecital extends Entrada {
+	private GeneroEntradaRecital genero;
+
+	// Constructores
 	public EntradaRecital() {
 		super();
-
-		this.genero = 1;
+		this.tipoEntrada = new TipoEntradaRecital();
+		// setea costo por tipo de entrada
+		this.setCosto(this.calcularCostoTotal());
+		this.genero = GeneroEntradaRecital.LATINOS;
 	}
 
-	
-	//Metodos 
-	
-	public BigDecimal getCostoFijoVip() {
-		return costoFijoVip;
-	}
-
-
-	public BigDecimal getCostoFijoGeneral() {
-		return costoFijoGeneral;
-	}
-
-	
-	public int getGenero() {
-		return genero;
-	}
-	
-	
-	public void setGenero(int genero) {
+	public EntradaRecital(String nombre, LocalDate diaFuncion, LocalTime horario, Duration duracion, BigDecimal costo,
+			ITipoEntrada tipoEntrada, GeneroEntradaRecital genero) {
+		super(nombre, diaFuncion, horario, duracion, costo, tipoEntrada);
+		// setea costo por tipo de entrada
+		this.setCosto(this.calcularCostoTotal());
 		this.genero = genero;
 	}
 
+	// Metodos
+	public GeneroEntradaRecital getGenero() {
+		return genero;
+	}
 
-
+	public void setGenero(GeneroEntradaRecital genero) {
+		this.genero = genero;
+	}
+	
+	@Override
+	public void setTipoEntrada(ITipoEntrada tipoEntrada) {
+		super.setTipoEntrada(tipoEntrada);
+		this.setCosto(this.calcularCostoTotal());
+	}
 
 	@Override
 	public String toString() {
-		
-		String generoMusical; 
-		
-		if(genero == 1) generoMusical= "Rock";
-		else if(genero == 2 )generoMusical = "Heavy Metal";
-		else if(genero == 3) generoMusical = "Reggaetón";
-		else if(genero == 4) generoMusical = "Trap";
-		else if(genero == 5) generoMusical = "Latinos";
-		else if(genero == 6) generoMusical = "Pop";
-		else generoMusical = "";
-		
-		
+		String generoMusical = getGenero().toString();
 		return "EntradaRecital ---- Genero Musical: " + generoMusical + " ," + super.toString();
 	}
-
-
-	public void calcularCosto(String tipo) {
-		tipo = tipo.toUpperCase();
-		
-		if(tipo.equals("VIP")) { this.setCostoTotal(costoFijoVip);}
-		else {this.setCostoTotal(costoFijoGeneral);
-				this.setTipoEntrada("General");
-			
-		
-		}	
 	
+	@Override
+	public BigDecimal calcularCostoTotal() {
+		String tipo = ((TipoEntradaRecital)getTipoEntrada()).getDescripcion().toString();
+		
+		switch(tipo) {
+			case "VIP":
+				return TipoEntradaRecital.getCostoFijoVip();
+		case "GENERAL":
+				return TipoEntradaRecital.getCostoFijoGeneral();
+			default:
+				return new BigDecimal(0);
+		}
 	}
-
-	
-	
-	
-	
-	
-
 }

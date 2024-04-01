@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.util.Date;
 
 import interfaces.ICosto;
+import interfaces.ITipoEntrada;
 
 public abstract class   Entrada {
 
@@ -20,7 +21,7 @@ public abstract class   Entrada {
 	private Duration duracion;
 	private BigDecimal costo;
 	// recitales - teatro - infantiles - deportes 
-	String tipoEntrada;
+	ITipoEntrada tipoEntrada;
 
 	// Constructores
 
@@ -32,15 +33,15 @@ public abstract class   Entrada {
 		horario = LocalTime.of(0, 0);
 		duracion = Duration.ofHours(0);
 		costo = new BigDecimal(0);
-		tipoEntrada = "";
+		tipoEntrada = null;
 	}
 
-	public Entrada( String nombre, LocalDate diaFuncion, LocalTime horario ,Duration duracion , BigDecimal costo,
-			String tipoEntrada) {
+	public Entrada(String nombre, LocalDate diaFuncion, LocalTime horario, Duration duracion, BigDecimal costo,
+			ITipoEntrada tipoEntrada) {
 		contadorEntradas++;
 		this.numeroUnicoEntrada = contadorEntradas;
 		this.nombre = nombre;
-		this.horario= horario;
+		this.horario = horario;
 		this.diaFuncion = diaFuncion;
 		this.duracion = duracion;
 		this.costo = costo;
@@ -72,11 +73,11 @@ public abstract class   Entrada {
 		this.costo = costo;
 	}
 
-	public String getTipoEntrada() {
+	public ITipoEntrada getTipoEntrada() {
 		return tipoEntrada;
 	}
 
-	public void setTipoEntrada(String tipoEntrada) {
+	public void setTipoEntrada(ITipoEntrada tipoEntrada) {
 		this.tipoEntrada = tipoEntrada;
 	}
 
@@ -142,11 +143,8 @@ public abstract class   Entrada {
 		
 		
 		return " Numero Unico de Entrada: " + numeroUnicoEntrada + ", Nombre del espectaculo: " + nombre +  ", Dia del espectaculo: " + diaFuncion
-				+ ", Tiempo estimado de duracion: " + horas +":" + minutos + ", Precio: " + costo+ ", Tipo de entrada: " + tipoEntrada;
+				+ ", Tiempo estimado de duracion: " + horas +":" + minutos + ", Precio: " + costo+ ", Tipo de entrada: " + tipoEntrada.toString();
 	}
 
-	
-	
-	
-//	public abstract BigDecimal calcularCostoTotal(String tipoEntrada);
+	public abstract BigDecimal calcularCostoTotal();
 }

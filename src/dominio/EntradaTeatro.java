@@ -1,22 +1,41 @@
 package dominio;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-import interfaces.ICosto;
+import enums.GeneroEntradaTeatro;
+import interfaces.ITipoEntrada;
 
-public class EntradaTeatro extends Entrada implements ICosto{
-// se declaran la variables 
-	private int genero;
-	final BigDecimal valorFijo = new BigDecimal(1350.50);
-	
+public class EntradaTeatro extends Entrada{
+	// se declaran la variables 
+	private GeneroEntradaTeatro genero;
 	private String[] actores = new String[3];
-
 	
-
+	//Constructores
+	public EntradaTeatro() {
+		super();
+		// setea costo por tipo de entrada
+		this.setCosto(this.calcularCostoTotal());
+		this.tipoEntrada = new TipoEntradaTeatro();
+		this.genero = GeneroEntradaTeatro.DRAMA;
+		
+	}
+	
+	public EntradaTeatro(String nombre, LocalDate diaFuncion, LocalTime horario, Duration duracion, BigDecimal costo,
+			ITipoEntrada tipoEntrada, GeneroEntradaTeatro genero, String[] actores) {
+		super(nombre, diaFuncion, horario, duracion, costo, tipoEntrada);
+		// setea costo por tipo de entrada
+		this.setCosto(this.calcularCostoTotal());
+		this.genero = genero;
+		this.actores = actores;
+	}
+	
+	// sets y gets
 	public void setActor(String actor, int posicion) {
 		actores[posicion] = actor;
 	}
-	
 	
 	public String getActor(int posicion) {
 		
@@ -31,69 +50,23 @@ public class EntradaTeatro extends Entrada implements ICosto{
 		this.actores = actores;
 	}
 
-	//Constructores
-	public EntradaTeatro() {
-		
-		super();
-		this.genero = 1;
-		
-	}
-	
-	
-	public EntradaTeatro(int genero) {
-		super();
-		this.genero = genero;
-	}
 
-	public int getGenero() {
+	public GeneroEntradaTeatro getGenero() {
 		return genero;
 	}
 
-	public void setGenero(int genero) {
+	public void setGenero(GeneroEntradaTeatro genero) {
 		this.genero = genero;
 		
 	}
 
-	public BigDecimal getValorFijo() {
-		return valorFijo;
+	@Override
+	public String toString() {		
+		return "EntradaTeatro ---- Genero Teatral: " + genero.toString() + " Actores: "+ getActor(0)+", "+ getActor(1) + ", "+ getActor(2) + ", "+ super.toString();
 	}
-	
-	public String obtenerGenero(int genero) {
-		String tipoGenero = null;
-		if(genero == 1) {
-			tipoGenero ="Drama";
-			return tipoGenero;
-			
-		}else if (genero == 2) {
-			tipoGenero = "Teatro";
-			return tipoGenero;
-			
-		}else if (genero == 3) {
-			tipoGenero = "Comedia";
-			return tipoGenero;
-		}
-		return tipoGenero;
-	}
-	
-	
-
-
 
 	@Override
-	public String toString() {
-		
-		return "EntradaTeatro ---- Genero Teatral: " + obtenerGenero(genero) + " Actores: "+ getActor(0)+", "+ getActor(1) + ", "+ getActor(2) + ", "+ super.toString();
+	public BigDecimal calcularCostoTotal() {
+		return TipoEntradaTeatro.getValorFijo();
 	}
-
-
-	@Override
-	public void calcularCosto(String tipo) {
-		tipo = tipo.toUpperCase();
-		if(tipo.equals("UNICO")) {
-			
-			this.setCostoTotal(valorFijo);
-			
-		}
-	}
-	
 }
