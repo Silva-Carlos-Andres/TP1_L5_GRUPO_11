@@ -12,6 +12,24 @@ public class EntradaInfantil extends Entrada {
 	
 	
 	
+	public EntradaInfantil(double costoMenores, double costoMayores, boolean souvenir, int edad) {
+		super();
+		this.costoMenores = costoMenores;
+		this.costoMayores = costoMayores;
+		this.souvenir = souvenir;
+		this.edad = edad;
+	}
+
+	public EntradaInfantil() {
+		
+		super();
+		this.costoMenores = 0;
+		this.costoMayores = 0;
+		this.souvenir = false;
+		this.edad = 0;
+		
+	}
+
 	public boolean isSouvenir() {
 		return souvenir;
 	}
@@ -46,7 +64,7 @@ public class EntradaInfantil extends Entrada {
 		return costoMayores;
 	}
 
-
+/*
 
 	@Override
 	public BigDecimal calcularCostoTotal(String tipoEntrada) {
@@ -54,7 +72,7 @@ public class EntradaInfantil extends Entrada {
 		return null;
 	}
 
-
+*/
 
 	@Override
 	public String toString() {

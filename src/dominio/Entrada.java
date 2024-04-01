@@ -1,20 +1,23 @@
 package dominio;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
 import interfaces.ICosto;
 
-public abstract class Entrada {
+public abstract class   Entrada {
 
 	// atributos
 	private int numeroUnicoEntrada;
+	private static int contadorEntradas = 0;
 	private String nombre;
 	private LocalDate diaFuncion;
 	// duracion "hh:mm"
-	private LocalTime duracion;
+	private LocalTime horario;
+	private Duration duracion;
 	private BigDecimal costo;
 	// recitales - teatro - infantiles - deportes 
 	String tipoEntrada;
@@ -22,18 +25,22 @@ public abstract class Entrada {
 	// Constructores
 
 	public Entrada() {
-		numeroUnicoEntrada = 0;
+		contadorEntradas++;
+		numeroUnicoEntrada = contadorEntradas;
 		nombre = "Sin nombre";
 		diaFuncion = LocalDate.now();
-		duracion = LocalTime.now();
+		horario = LocalTime.of(0, 0);
+		duracion = Duration.ofHours(0);
 		costo = new BigDecimal(0);
 		tipoEntrada = "";
 	}
 
-	public Entrada(int id, String nombre, LocalDate diaFuncion, LocalTime duracion, BigDecimal costo,
+	public Entrada( String nombre, LocalDate diaFuncion, LocalTime horario ,Duration duracion , BigDecimal costo,
 			String tipoEntrada) {
-		this.numeroUnicoEntrada = id;
+		contadorEntradas++;
+		this.numeroUnicoEntrada = contadorEntradas;
 		this.nombre = nombre;
+		this.horario= horario;
 		this.diaFuncion = diaFuncion;
 		this.duracion = duracion;
 		this.costo = costo;
@@ -41,12 +48,40 @@ public abstract class Entrada {
 	}
 
 	// getters y setters
+	
+	
 	public int getNumeroUnicoEntrada() {
 		return numeroUnicoEntrada;
 	}
 
-	public void setNumeroUnicoEntrada(int numeroUnicoEntrada) {
-		this.numeroUnicoEntrada = numeroUnicoEntrada;
+	public LocalTime getHorario() {
+		return horario;
+	}
+
+	public void setHorario(int horas, int minutos) {
+		
+		this.horario = LocalTime.of(horas, minutos);
+		
+	}
+
+	public BigDecimal getCosto() {
+		return costo;
+	}
+
+	public void setCosto(BigDecimal costo) {
+		this.costo = costo;
+	}
+
+	public String getTipoEntrada() {
+		return tipoEntrada;
+	}
+
+	public void setTipoEntrada(String tipoEntrada) {
+		this.tipoEntrada = tipoEntrada;
+	}
+
+	public void setDuracion(Duration duracion) {
+		this.duracion = duracion;
 	}
 
 	public String getNombre() {
@@ -57,12 +92,14 @@ public abstract class Entrada {
 		this.nombre = nombre;
 	}
 
-	public LocalTime getDuracion() {
+	public Duration getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(LocalTime duracion) {
-		this.duracion = duracion;
+	public void setDuracion(int horas, int minutos) {
+		
+		
+		this.duracion = Duration.ofHours(horas).plusMinutes(minutos);
 	}
 
 	public BigDecimal getCostoTotal() {
@@ -74,12 +111,42 @@ public abstract class Entrada {
 	}
 
 	public LocalDate getDiaFuncion() {
+		
+		
 		return diaFuncion;
 	}
 
-	public void setDiaFuncion(LocalDate diaFuncion) {
-		this.diaFuncion = diaFuncion;
+	public void setDiaFuncion(int dia, int mes, int anio) {
+		
+		LocalDate fechaFuncion = LocalDate.of(anio, mes, dia);
+		this.diaFuncion = fechaFuncion;
 	}
 
-	public abstract BigDecimal calcularCostoTotal(String tipoEntrada);
+	@Override
+	public String toString() {
+		
+		long horasNum = duracion.toHours();
+		long minutosNum = duracion.toMinutes();
+		minutosNum = minutosNum - (horasNum * 60); 
+		
+		String horas = "";
+		String minutos = "";
+		
+		if(horasNum == 0) horas = "00";
+		else if (horasNum > 0 && horasNum <10)  horas = "0"+horasNum;
+	    else if (horasNum >= 10 )  horas = String.valueOf(horasNum);
+		
+		if(minutosNum == 0) minutos = "00";
+		else if (minutosNum > 0 && minutosNum <10) horas = "0"+minutosNum;
+		else if (minutosNum >= 10 ) minutos = minutosNum +" hs";
+		
+		
+		return " Numero Unico de Entrada: " + numeroUnicoEntrada + ", Nombre del espectaculo: " + nombre +  ", Dia del espectaculo: " + diaFuncion
+				+ ", Tiempo estimado de duracion: " + horas +":" + minutos + ", Precio: " + costo+ ", Tipo de entrada: " + tipoEntrada;
+	}
+
+	
+	
+	
+//	public abstract BigDecimal calcularCostoTotal(String tipoEntrada);
 }

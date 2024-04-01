@@ -11,12 +11,35 @@ public class EntradaRecital extends Entrada implements ICosto{
 	
 	private int genero;
 	
-
+	
+	
+	//Constructores
+	
 	public EntradaRecital(int genero) {
 		super();
 		this.genero = genero;
+		
+	}
+	
+	public EntradaRecital() {
+		super();
+
+		this.genero = 1;
 	}
 
+	
+	//Metodos 
+	
+	public BigDecimal getCostoFijoVip() {
+		return costoFijoVip;
+	}
+
+
+	public BigDecimal getCostoFijoGeneral() {
+		return costoFijoGeneral;
+	}
+
+	
 	public int getGenero() {
 		return genero;
 	}
@@ -27,40 +50,42 @@ public class EntradaRecital extends Entrada implements ICosto{
 	}
 
 
-	public void calcularCosto(String tipo) {
-		
-		if(tipo.equals("vip")) this.setCostoTotal(costoFijoVip);
-		else this.setCostoTotal(costoFijoGeneral);	
-	
-	}
 
-	@Override
-	public BigDecimal calcularCostoTotal(String tipoEntrada) {
-		if(tipoEntrada.equals("vip")) {
-			return costoFijoVip;
-		}
-		else {
-			return costoFijoGeneral;
-		}	
-	}
 
 	@Override
 	public String toString() {
-		return "EntradaRecital [Costo Fijo VIP: " + costoFijoVip + ", Costo Fijo General: " + costoFijoGeneral + ", Genero: "
-				+ genero + "]";
+		
+		String generoMusical; 
+		
+		if(genero == 1) generoMusical= "Rock";
+		else if(genero == 2 )generoMusical = "Heavy Metal";
+		else if(genero == 3) generoMusical = "Reggaetón";
+		else if(genero == 4) generoMusical = "Trap";
+		else if(genero == 5) generoMusical = "Latinos";
+		else if(genero == 6) generoMusical = "Pop";
+		else generoMusical = "";
+		
+		
+		return "EntradaRecital ---- Genero Musical: " + generoMusical + " ," + super.toString();
+	}
+
+
+	public void calcularCosto(String tipo) {
+		tipo = tipo.toUpperCase();
+		
+		if(tipo.equals("VIP")) { this.setCostoTotal(costoFijoVip);}
+		else {this.setCostoTotal(costoFijoGeneral);
+				this.setTipoEntrada("General");
+			
+		
+		}	
+	
 	}
 
 	
-
 	
 	
 	
-
-		
-		
-		
-		
-		
 	
 
 }
