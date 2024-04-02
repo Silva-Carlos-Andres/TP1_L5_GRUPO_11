@@ -15,7 +15,7 @@ import enums.GeneroEntradaTeatro;
  * @author
  *  Carlos <a href="https://github.com/Silva-Carlos-Andres">Silva-Carlos-Andres</a>
  * @author
- *  Gastón <a href="https://github.com/gaston5050">gaston5050</a>
+ *  Gastï¿½n <a href="https://github.com/gaston5050">gaston5050</a>
  * @author
  *  Gustavo <a href="#">(...)</a>
  * @author
@@ -86,5 +86,9 @@ public class Principal {
 		teatro3.setActor("Diego Luna" , 2);
 		
 		System.out.println(teatro3.toString());
+		
+		EntradaDeporte futbol = new EntradaDeporte();
+		
+		System.out.println(futbol.EntradaFutbolInternacional());
 	}
 }
