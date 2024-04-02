@@ -3,7 +3,7 @@ package enums;
 public enum GeneroEntradaRecital {
 	ROCK,
 	HEAVY_METAL,
-	REGGAETÓN,
+	REGGAETON,
 	TRAP,
 	LATINOS,
 	POP
