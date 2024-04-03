@@ -4,9 +4,6 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
-
-import interfaces.ICosto;
 import interfaces.ITipoEntrada;
 
 public abstract class   Entrada {
@@ -143,7 +140,7 @@ public abstract class   Entrada {
 		
 		
 		return " Numero Unico de Entrada: " + numeroUnicoEntrada + ", Nombre del espectaculo: " + nombre +  ", Dia del espectaculo: " + diaFuncion
-				+ ", Tiempo estimado de duracion: " + horas +":" + minutos + ", Precio: " + costo+ ", Tipo de entrada: " + tipoEntrada.toString();
+				+ ", horario: " + horario + ", Tiempo estimado de duracion: " + horas +":" + minutos + ", Precio: " + costo+ ", Tipo de entrada: " + tipoEntrada.toString();
 	}
 
 	public abstract BigDecimal calcularCostoTotal();

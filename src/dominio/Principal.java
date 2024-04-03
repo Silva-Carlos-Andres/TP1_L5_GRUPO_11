@@ -1,9 +1,8 @@
 package dominio;
 
-import java.math.BigDecimal;
-import java.nio.channels.SeekableByteChannel;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import enums.DescripcionTipoRecital;
 import enums.GeneroEntradaRecital;
@@ -29,24 +28,50 @@ public class Principal {
 		
 		//ENTRADA RECITAL
 		//VIP
-		Entrada recital = new EntradaRecital();
-		((EntradaRecital)recital).setGenero(GeneroEntradaRecital.ROCK);
-		
-		recital.setNombre(" Mantequita tuerta ");
-		recital.setDiaFuncion(06, 05, 2023);
-		recital.setDuracion(2, 33);
-		recital.setTipoEntrada(new TipoEntradaRecital(DescripcionTipoRecital.VIP));
+		Persona[] p = {
+						new Profesional("Luis", "Ayala",GeneroEntradaRecital.REGGAETON),
+						new Profesional(),
+						new Profesional()
+					};
+		Entrada recital = new EntradaRecital(
+								" Mantequita tuerta ",
+								LocalDate.of(2023, 05, 06),
+								LocalTime.of(0, 0),
+								Duration.ofHours(2).plusMinutes(33),
+								null,
+								new TipoEntradaRecital(DescripcionTipoRecital.VIP),
+								new Banda(
+										"Daddy Yankee",
+										p,
+										LocalDate.of(1994, 1, 1),
+										GeneroEntradaRecital.REGGAETON
+										),
+								new Banda[2]
+							);
 		
 		System.out.println(recital.toString());
 		
 		//GENERAL
-		EntradaRecital recital2 = new EntradaRecital();
-		recital2.setGenero(GeneroEntradaRecital.POP);
-		
-		recital2.setNombre(" CosquinPop ");
-		recital2.setDiaFuncion(06, 06, 2025);
-		recital2.setDuracion(1, 45);
-		recital2.setTipoEntrada(new TipoEntradaRecital(DescripcionTipoRecital.GENERAL));
+		Persona[] p2 = {
+					new Profesional("Paul", "Hewson",GeneroEntradaRecital.REGGAETON),
+					new Profesional(),
+					new Profesional()
+				};
+		Entrada recital2 = new EntradaRecital(
+				" CosquinPop ",
+				LocalDate.of(2025, 06, 06),
+				LocalTime.of(0, 0),
+				Duration.ofHours(1).plusMinutes(45),
+				null,
+				new TipoEntradaRecital(DescripcionTipoRecital.GENERAL),
+				new Banda(
+						"U2",
+						p2,
+						LocalDate.of(1976, 1, 1),
+						GeneroEntradaRecital.POP
+						),
+				new Banda[2]
+			);
 		System.out.println(recital2.toString());
 		
 		

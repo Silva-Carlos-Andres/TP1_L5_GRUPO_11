@@ -1,7 +1,6 @@
 package dominio;
-import java.math.BigDecimal;
 
-import enums.EdadesEntradaInfantil;
+import java.math.BigDecimal;
 import interfaces.ITipoEntrada;
 
 public class TipoEntradaInfantil implements ITipoEntrada {
