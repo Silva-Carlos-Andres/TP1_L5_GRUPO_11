@@ -76,27 +76,55 @@ public class Principal {
 		
 		
 		//ENTRADA TEATRO
+		//CREACION ACTORES
+		Actor[] actores = new Actor[9];
+		
+		actores[0] = new Actor();
+		actores[0].setNombreApellido("Joseph","Manon");
+		actores[1] = new Actor();
+		actores[1].setNombreApellido("Luis", "Caputto");
+		actores[2] = new Actor();
+		actores[2].setNombreApellido("Hector", "Alterio");
+		actores[3] = new Actor();
+		actores[3].setNombreApellido("Samuel", "Simpson");
+		actores[4] = new Actor();
+		actores[4].setNombreApellido("James", "Rosedal");
+		actores[5] = new Actor();
+		actores[5].setNombreApellido("Silvio", "Soldan");
+		actores[6] = new Actor();
+		actores[6].setNombreApellido("Duende", "Verde");
+		actores[7] = new Actor();
+		actores[7].setNombreApellido("William", "Williams");
+		actores[8] = new Actor();
+		actores[8].setNombreApellido("Sargento", "Garcia");
+		
+		
+		
+		
+		
 		//DRAMA
 		EntradaTeatro teatro1 = new EntradaTeatro();
 		teatro1.setGenero(GeneroEntradaTeatro.DRAMA);
 		teatro1.setNombre("La obrita dramatica");
 		teatro1.setDiaFuncion(03, 06, 2025);
 		teatro1.setDuracion(3,55);
-		teatro1.setActor("Leonardo Hectoral" , 0);
-		teatro1.setActor("Manon Joseph" , 1);
-		teatro1.setActor("Hector Alterio" , 2);
+		teatro1.setActor(actores[0].getNombreApellido() , 0);
+		teatro1.setActor(actores[1].getNombreApellido() , 1);
+		teatro1.setActor(actores[2].getNombreApellido() , 2);
+		
 		
 		System.out.println(teatro1.toString());
 		
 		//TEATRO
 		EntradaTeatro teatro2 = new EntradaTeatro();
-		teatro2.setGenero(GeneroEntradaTeatro.TEATTRO);
+		teatro2.setGenero(GeneroEntradaTeatro.TEATRO);
 		teatro2.setNombre("La desgracia del feriado");
 		teatro2.setDiaFuncion(03, 06, 2026);
 		teatro2.setDuracion(2,35);
-		teatro2.setActor("James Rosedal" , 0);
-		teatro2.setActor("Silvio Soldan" , 1);
-		teatro2.setActor("Duende Verde" , 2);
+		teatro2.setActor(actores[3].getNombreApellido() , 0);
+		teatro2.setActor(actores[4].getNombreApellido() , 1);
+		teatro2.setActor(actores[5].getNombreApellido() , 2);
+		
 		
 		System.out.println(teatro2.toString());
 		
@@ -106,9 +134,9 @@ public class Principal {
 		teatro3.setNombre("La risa ");
 		teatro3.setDiaFuncion(16, 05, 2026);
 		teatro3.setDuracion(1,13);
-		teatro3.setActor("William Williams" , 0);
-		teatro3.setActor("Sargento Garcia" , 1);
-		teatro3.setActor("Diego Luna" , 2);
+		teatro3.setActor(actores[6].getNombreApellido() , 0);
+		teatro3.setActor(actores[7].getNombreApellido() , 1);
+		teatro3.setActor(actores[8].getNombreApellido() , 2);
 		
 		System.out.println(teatro3.toString());
 		

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import interfaces.ITipoEntrada;
 
 public class TipoEntradaTeatro implements ITipoEntrada{
+	
 	private static final BigDecimal valorFijo = new BigDecimal(1350.50);
 	
 	// gets y sets

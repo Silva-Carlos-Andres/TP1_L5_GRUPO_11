@@ -31,6 +31,7 @@ public class Profesional extends Persona implements IMusico {
 		return "Profesional [genero=" + genero + "]" + " " + super.toString();
 	}
 
+	
 	@Override
 	public String hacerMusica() {
 		return "Tarareando voy...";

@@ -11,7 +11,8 @@ import interfaces.ITipoEntrada;
 public class EntradaTeatro extends Entrada{
 	// se declaran la variables 
 	private GeneroEntradaTeatro genero;
-	private String[] actores = new String[3];
+    public static final int cantidadMaximaActores = 3;
+	private String[] actores = new String[cantidadMaximaActores];
 	
 	//Constructores
 	public EntradaTeatro() {
