@@ -11,10 +11,26 @@ public class EntradaDeporte extends Entrada {
 	double costoRugby = 450;
 	double costoHockey = 380;
 	double recargoInternacional = 1.3;
+	
+	
+	public EntradaDeporte() {
+		super();
+		
+	}
+
+	public EntradaDeporte(double recargoInternacional, String tipoDeporte, boolean internacional,
+			DescripcionTipoDeporte tipoDep) {
+		super();
+		this.recargoInternacional = recargoInternacional;
+		this.tipoDeporte = tipoDeporte;
+		this.internacional = internacional;
+		this.tipoDep = tipoDep;
+	}
 
 	String tipoDeporte;
 	boolean internacional;
 	private DescripcionTipoDeporte tipoDep;
+
 	public String getTipoDeporte() {
 		return tipoDeporte;
 	}
@@ -59,15 +75,29 @@ public class EntradaDeporte extends Entrada {
 		super.setTipoEntrada(tipoEntrada);
 		this.setCosto(this.calcularCostoTotal());
 	}
+
 	@Override
 	public String toString() {
 		return "EntradaDeporte [Costo Futbol: " + costoFutbol + ", Costo Rugby: " + costoRugby + ", Costo Hockey: "
 				+ costoHockey + ", Recargo Internacional: " + recargoInternacional + ", Tipo Deporte: " + tipoDeporte
 				+ ", Internacional: " + internacional + "]";
 	}
+
 	public String EntradaFutbolInternacional() {
 		setTipoDep(DescripcionTipoDeporte.Futbol);
-		return "Entrada Futbol internacional: " + calcularInternacional(true);
+		return "Entrada Futbol internacional: " + calcularInternacional(true) + " , Entrada Futbol Local: "
+				+ calcularInternacional(false);
+	}
+
+	public String EntradaRugbyInternacional() {
+		setTipoDep(DescripcionTipoDeporte.Rugby);
+		return "Entrada Rugby Internacional: " + calcularInternacional(true) + " , Entrada Rugby Local: "
+				+ calcularInternacional(false);
+	}
+	public String EntradaHockeyInternacional() {
+		setTipoDep(DescripcionTipoDeporte.Hockey);
+		return "Entrada Hockey Internacional: " + calcularInternacional(true) + " , Entrada Hockey Local: "
+		+ calcularInternacional(false);
 	}
 
 	public Double calcularInternacional(boolean internacional) {
@@ -82,8 +112,8 @@ public class EntradaDeporte extends Entrada {
 	@Override
 	public BigDecimal calcularCostoTotal() {
 		// TODO Auto-generated method stub
-		String tipo = DescripcionTipoDeporte.Futbol.toString();
-
+		// String tipo = DescripcionTipoDeporte.Futbol.toString();
+		String tipo = getTipoDep().toString();
 		switch (tipo) {
 		case "Futbol":
 			return TipoEntradaDeporte.getValorFutbol();
@@ -93,7 +123,7 @@ public class EntradaDeporte extends Entrada {
 
 		case "Hockey":
 			return TipoEntradaDeporte.getValorHockey();
-		default: 
+		default:
 			return new BigDecimal(0);
 		}
 	}

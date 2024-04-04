@@ -64,6 +64,8 @@ public class EntradaRecital extends Entrada {
 		this.setCosto(this.calcularCostoTotal());
 	}
 	
+	
+	
 	@Override
 	public String toString() {
 		return "EntradaRecital ---- Genero Musical: " + genero + ", bandaPrincipal=" + bandaPrincipal + ", bandaSoporte="

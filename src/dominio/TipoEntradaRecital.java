@@ -6,6 +6,7 @@ import enums.DescripcionTipoRecital;
 import interfaces.ITipoEntrada;
 
 public class TipoEntradaRecital implements ITipoEntrada{
+	
 	private final static BigDecimal costoFijoVip = BigDecimal.valueOf(1500);
 	private final static BigDecimal costoFijoGeneral = new BigDecimal(800);
 	private DescripcionTipoRecital descripcion;

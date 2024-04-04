@@ -6,7 +6,7 @@ import interfaces.ITipoEntrada;
 public class TipoEntradaInfantil implements ITipoEntrada {
 	private final static BigDecimal costoMenores = BigDecimal.valueOf(250);
 	private final static BigDecimal costoMayores = new BigDecimal(500);
-	private final static boolean souvenur = true;
+	private boolean souvenir = true;
 
 	
 	// gets y sets
@@ -18,10 +18,17 @@ public class TipoEntradaInfantil implements ITipoEntrada {
 		return costoMayores;
 	}
 	
-	public static boolean getSouvenir() {
-		return souvenur;
+	public  boolean getSouvenir() {
+		return souvenir;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return devuelveInformacion() ;
+	}
+
 	@Override
 	public String devuelveInformacion() {
 		return "Entrada Infantil";

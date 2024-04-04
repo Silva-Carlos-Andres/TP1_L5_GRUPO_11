@@ -28,7 +28,6 @@ public class Principal {
 		
 		//ENTRADA RECITAL
 		//VIP
-		
 		Persona[] p = {
 						new Profesional("Luis", "Ayala",GeneroEntradaRecital.REGGAETON),
 						new Profesional(),
@@ -74,8 +73,7 @@ public class Principal {
 				new Banda[2]
 			);
 		System.out.println(recital2.toString());
-
-		System.out.println("");
+		
 		
 		//ENTRADA TEATRO
 		//CREACION ACTORES
@@ -145,39 +143,5 @@ public class Principal {
 		EntradaDeporte futbol = new EntradaDeporte();
 		
 		System.out.println(futbol.EntradaFutbolInternacional());
-		System.out.println("");
-
-		
-		
-		
-		//ENTRADA EVENTOS INFANTILES
-		
-		//Entrada menor
-		Entrada entradaInfantil = new EntradaInfantil(false, 8);
-		entradaInfantil.setNombre("Cumpleaños Ronaldo");
-		entradaInfantil.setDiaFuncion(03, 06, 2025);
-		entradaInfantil.setDuracion(3,55);
-		entradaInfantil.setHorario(11, 30);
-		System.out.println(entradaInfantil.toString());
-		
-		//Entrada mayor
-				Entrada entradaInfantil2 = new EntradaInfantil(false, 9);
-				entradaInfantil2.setNombre("Cumpleaños Ernesto");
-				entradaInfantil2.setDiaFuncion(03, 07, 2025);
-				entradaInfantil2.setDuracion(3,50);
-				entradaInfantil2.setHorario(11, 45);
-				System.out.println(entradaInfantil2.toString());
-				System.out.println("");
-
-		
-		//Entrada eventos desportivos
-				
-				EntradaDeporte futbol2 = new EntradaDeporte();
-
-				System.out.println(futbol2.EntradaFutbolInternacional());
-				System.out.println(futbol2.EntradaRugbyInternacional());
-				System.out.println(futbol2.EntradaHockeyInternacional());
-		
-		
 	}
 }

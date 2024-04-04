@@ -31,6 +31,7 @@ public abstract class   Entrada {
 		duracion = Duration.ofHours(0);
 		costo = new BigDecimal(0);
 		tipoEntrada = null;
+		
 	}
 
 	public Entrada(String nombre, LocalDate diaFuncion, LocalTime horario, Duration duracion, BigDecimal costo,

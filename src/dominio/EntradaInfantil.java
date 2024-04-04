@@ -2,31 +2,32 @@ package dominio;
 
 import java.math.BigDecimal;
 
+import enums.EdadesEntradaInfantil;
+import interfaces.ITipoEntrada;
+
 public class EntradaInfantil extends Entrada {
 
-	double costoMenores = 250;
-	double costoMayores = 500;
-	
-	boolean souvenir;
-	int edad;
 	
 	
+	private boolean souvenir;
+	private int edad;
 	
-	public EntradaInfantil(double costoMenores, double costoMayores, boolean souvenir, int edad) {
+	
+	
+	public EntradaInfantil(boolean souvenir, int edad) {
 		super();
-		this.costoMenores = costoMenores;
-		this.costoMayores = costoMayores;
 		this.souvenir = souvenir;
 		this.edad = edad;
+		this.setTipoEntrada(new TipoEntradaInfantil());
 	}
 
 	public EntradaInfantil() {
 		
 		super();
-		this.costoMenores = 0;
-		this.costoMayores = 0;
+
 		this.souvenir = false;
 		this.edad = 0;
+		this.setTipoEntrada(new TipoEntradaInfantil());
 		
 	}
 
@@ -51,30 +52,37 @@ public class EntradaInfantil extends Entrada {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-
-
-
-	public double getCostoMenores() {
-		return costoMenores;
+	
+	@Override
+	public void setTipoEntrada(ITipoEntrada tipoEntrada) {
+		super.setTipoEntrada(tipoEntrada);
+		this.setCosto(this.calcularCostoTotal());
 	}
 
 
-
-	public double getCostoMayores() {
-		return costoMayores;
-	}
 
 	@Override
 	public String toString() {
-		return "EntradaInfantil [Costo Menores: " + costoMenores + ", Costo Mayores: " + costoMayores + ", Souvenir: "
-				+ souvenir + ", Edad: " + edad + "]";
+		return "EntradaInfantil [souvenir=" + souvenir + ", edad=" + edad + "]" + super.toString();
 	}
 
 	@Override
 	public BigDecimal calcularCostoTotal() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		if(this.getEdad()<= 8) {
+			
+			return TipoEntradaInfantil.getCostoMenores8();
+			
+		}
+		else {
+			
+			return TipoEntradaInfantil.getCostoMayores8();
+		}
+		
+		
+		
+		
+		}
+	
 	
 	
 
